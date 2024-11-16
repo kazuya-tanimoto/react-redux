@@ -1,5 +1,7 @@
+import './App.css'
 import {useDispatch, useSelector} from "react-redux";
 import {decrement, increment, login} from "./actions";
+import {Flex, Heading} from "@chakra-ui/react";
 
 function App() {
     const counter = useSelector((state: { counter: number }) => state.counter)
@@ -8,7 +10,10 @@ function App() {
 
     return (
         <>
-            <h1>Redux</h1>
+            <Flex w="full" justify="space-around" py={4} bg="gray.700" >
+                <Heading as="h1" size="3xl" color="white">Redux</Heading>
+                <Heading as="h2" size="3xl" color="white">React</Heading>
+            </Flex>
             <p>
                 This is a simple example of using Redux with React.aaa
             </p>
