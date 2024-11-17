@@ -1,23 +1,27 @@
-import {StrictMode} from 'react'
-import {createRoot} from 'react-dom/client'
-import App from './App.tsx'
-import {createStore} from "redux";
-import {reducers} from "./reducers";
-import {composeWithDevTools} from "@redux-devtools/extension";
-import {Provider} from "react-redux";
-import {ChakraProvider} from "@chakra-ui/react";
+import { ComponentPreviews, useInitial } from "@/dev";
+import { store } from "@/store.ts";
+import { ChakraProvider } from "@chakra-ui/react";
+import { DevSupport } from "@react-buddy/ide-toolbox";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import App from "./App.tsx";
 
-const store = createStore(
-    reducers,
-    composeWithDevTools()
-);
+// const store = createStore(reducers, composeWithDevTools());
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById("root");
+root != null &&
+  createRoot(root).render(
     <StrictMode>
-        <Provider store={store}>
-            <ChakraProvider>
-            <App/>
-            </ChakraProvider>
-        </Provider>
+      <Provider store={store}>
+        <ChakraProvider>
+          <DevSupport
+            ComponentPreviews={ComponentPreviews}
+            useInitialHook={useInitial}
+          >
+            <App />
+          </DevSupport>
+        </ChakraProvider>
+      </Provider>
     </StrictMode>,
-)
+  );
