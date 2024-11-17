@@ -3,6 +3,8 @@ import cartReducer from "./features/cart/CartSlice";
 
 export const store = configureStore({
   reducer: {
-    cartItem: cartReducer,
+    cart: cartReducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
