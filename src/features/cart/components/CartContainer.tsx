@@ -1,5 +1,6 @@
+import { clearCart } from "@/features/cart/CartSlice.ts";
 import { CartItem } from "@/features/cart/components/CartItem.tsx";
-import { cartItems } from "@/features/cart/data/CartItems.ts";
+import type { RootState } from "@/store.ts";
 import {
   Button,
   Divider,
@@ -8,9 +9,13 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
 
 export const CartContainer = () => {
-  let total = 0;
+  const { cartItems, total } = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
+
+  // const total = 0;
 
   return (
     <VStack
@@ -24,7 +29,7 @@ export const CartContainer = () => {
       </Heading>
       <VStack w="full" px={8} gap={10}>
         {cartItems.map((item) => {
-          total += item.price * item.amount;
+          // total += item.price * item.amount;
           return <CartItem key={item.id} {...item} />;
         })}
       </VStack>
@@ -34,7 +39,7 @@ export const CartContainer = () => {
           <Text fontSize="xl">{total.toLocaleString()} 円</Text>
         </HStack>
         <HStack justify="space-around" w="full">
-          <Button size="lg" w={32}>
+          <Button size="lg" w={32} onClick={() => dispatch(clearCart())}>
             全削除
           </Button>
           <Button colorScheme="teal" size="lg" w={32}>

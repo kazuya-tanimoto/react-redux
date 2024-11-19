@@ -1,9 +1,12 @@
+import { deleteItem } from "@/features/cart/CartSlice.ts";
 import type { CartItem as CartItemType } from "@/features/types";
 import { Button, HStack, Heading, Image, Text, VStack } from "@chakra-ui/react";
 import { LuMinusCircle, LuPlusCircle } from "react-icons/lu";
+import { useDispatch } from "react-redux";
 
-export const CartItem = ({ name, price, url, amount }: CartItemType) => {
+export const CartItem = ({ id, name, price, url, amount }: CartItemType) => {
   const subtotal = price * amount;
+  const dispatch = useDispatch();
 
   return (
     <HStack gap={12} justify="start" w="full">
@@ -33,7 +36,11 @@ export const CartItem = ({ name, price, url, amount }: CartItemType) => {
             </Heading>
             <Text w={20}>{subtotal.toLocaleString()} 円</Text>
           </HStack>
-          <Button colorScheme="teal" size="sm">
+          <Button
+            colorScheme="teal"
+            size="sm"
+            onClick={() => dispatch(deleteItem(id))}
+          >
             削除
           </Button>
         </HStack>
