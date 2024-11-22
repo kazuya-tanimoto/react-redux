@@ -34,13 +34,15 @@ const cartSlice = createSlice({
       });
       if (cartItem) cartItem.amount -= 1;
     },
-    calculate: (state) => {
+    calculate: (state, action) => {
+      const cartItems = action.payload;
+
       let total = 0;
       let amount = 0;
 
-      for (let i = 0; i < state.cartItems.length; i++) {
-        total += state.cartItems[i].price * state.cartItems[i].amount;
-        amount += state.cartItems[i].amount;
+      for (let i = 0; i < cartItems.length; i++) {
+        total += cartItems[i].price * cartItems[i].amount;
+        amount += cartItems[i].amount;
       }
 
       state.total = total;

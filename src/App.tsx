@@ -12,7 +12,7 @@ function App() {
   const { cartItems } = useSelector((state: RootState) => state.cart);
 
   useEffect(() => {
-    dispatch(calculate());
+    dispatch(calculate(cartItems));
   }, [dispatch, cartItems]);
 
   return (
