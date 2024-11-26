@@ -3,9 +3,9 @@ import { useCartItem } from "@/features/cart/hooks/useCartItem.ts";
 import type { CartItem as CartItemType } from "@/features/types";
 import { Button, HStack, Heading, Image, Text, VStack } from "@chakra-ui/react";
 
-export const CartItem = ({ id, name, price, url, amount }: CartItemType) => {
-  const subtotal = price * amount;
-  const { handleDelete } = useCartItem(id, name, amount);
+export const CartItem = ({ id, name, price, url, quantity }: CartItemType) => {
+  const subtotal = price * quantity;
+  const { handleDelete } = useCartItem(id, name, quantity);
 
   return (
     <HStack gap={12} justify="start" w="full">
@@ -21,7 +21,7 @@ export const CartItem = ({ id, name, price, url, amount }: CartItemType) => {
           <p>{price.toLocaleString()} 円</p>
         </HStack>
         <HStack w="full" gap={16}>
-          <QuantityControl id={id} amount={amount} name={name} />
+          <QuantityControl id={id} quantity={quantity} name={name} />
           <HStack>
             <Heading as="h4" size="sm">
               小計

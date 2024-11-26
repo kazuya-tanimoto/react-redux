@@ -1,7 +1,7 @@
 import { decrease, deleteItem, increase } from "@/features/cart/CartSlice.ts";
 import { useDispatch } from "react-redux";
 
-export const useCartItem = (id: number, name: string, amount: number) => {
+export const useCartItem = (id: number, name: string, quantity: number) => {
   const dispatch = useDispatch();
 
   const handleIncrease = () => {
@@ -9,7 +9,7 @@ export const useCartItem = (id: number, name: string, amount: number) => {
   };
 
   const handleDecrease = () => {
-    if (amount > 1) {
+    if (quantity > 1) {
       dispatch(decrease(id));
     } else {
       dispatch(deleteItem(id));
@@ -21,7 +21,7 @@ export const useCartItem = (id: number, name: string, amount: number) => {
   };
 
   const decreaseIconAriaLabel =
-    amount > 0 ? `decrease ${name}` : `delete ${name}`;
+    quantity > 0 ? `decrease ${name}` : `delete ${name}`;
 
   return {
     handleIncrease,

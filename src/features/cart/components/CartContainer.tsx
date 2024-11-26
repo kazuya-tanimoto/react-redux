@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 export const CartContainer = () => {
-  const { handleClearCart, cartItems, total } = useCart();
+  const { handleClearCart, cartItems, totalPrice } = useCart();
 
   return (
     <VStack
@@ -30,7 +30,7 @@ export const CartContainer = () => {
       <VStack w="full" px={8} gap={16}>
         <HStack justify="space-between" w="full">
           <Text fontSize="xl">合計金額</Text>
-          <Text fontSize="xl">{total.toLocaleString()} 円</Text>
+          <Text fontSize="xl">{totalPrice.toLocaleString()} 円</Text>
         </HStack>
         <HStack justify="space-around" w="full">
           <Button size="lg" w={32} onClick={() => handleClearCart()}>

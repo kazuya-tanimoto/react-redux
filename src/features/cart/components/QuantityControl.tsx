@@ -6,19 +6,19 @@ import { LuMinusCircle, LuPlusCircle } from "react-icons/lu";
 
 type Props = {
   id: number;
-  amount: number;
+  quantity: number;
   name: string;
 };
 
-export const QuantityControl = ({ id, amount, name }: Props): JSX.Element => {
+export const QuantityControl = ({ id, quantity, name }: Props): JSX.Element => {
   const { handleIncrease, handleDecrease, decreaseIconAriaLabel } = useCartItem(
     id,
     name,
-    amount,
+    quantity,
   );
 
-  const decreaseIcon = (amount: number) => {
-    return amount > 1 ? (
+  const decreaseIcon = (quantity: number) => {
+    return quantity > 1 ? (
       <LuMinusCircle size={24} />
     ) : (
       <IoTrashBinOutline size={24} />
@@ -33,12 +33,12 @@ export const QuantityControl = ({ id, amount, name }: Props): JSX.Element => {
       <IconButton
         aria-label={decreaseIconAriaLabel}
         p={1}
-        icon={decreaseIcon(amount)}
+        icon={decreaseIcon(quantity)}
         variant="ghost"
         sx={{ _hover: { bg: "transparent" } }}
         onClick={() => handleDecrease()}
       />
-      <Text w={8}>{amount}</Text>
+      <Text w={8}>{quantity}</Text>
       <IconButton
         aria-label={`increase ${name}`}
         p={1}

@@ -1,14 +1,18 @@
 import { clearCart } from "@/features/cart/CartSlice.ts";
-import type { RootState } from "@/store.ts";
+import {
+  selectCartItems,
+  selectTotalPrice,
+} from "@/features/cart/selectors.ts";
 import { useDispatch, useSelector } from "react-redux";
 
 export const useCart = () => {
   const dispatch = useDispatch();
-  const { cartItems, total } = useSelector((state: RootState) => state.cart);
+  const cartItems = useSelector(selectCartItems);
+  const totalPrice = useSelector(selectTotalPrice);
 
   const handleClearCart = () => {
     dispatch(clearCart());
   };
 
-  return { handleClearCart, cartItems, total };
+  return { handleClearCart, cartItems, totalPrice };
 };
