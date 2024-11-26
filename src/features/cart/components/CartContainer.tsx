@@ -22,25 +22,31 @@ export const CartContainer = () => {
       <Heading as="h2" size="2xl">
         Cart
       </Heading>
-      <VStack w="full" px={8} gap={10}>
-        {cartItems.map((item) => {
-          return <CartItem key={item.id} {...item} />;
-        })}
-      </VStack>
-      <VStack w="full" px={8} gap={16}>
-        <HStack justify="space-between" w="full">
-          <Text fontSize="xl">合計金額</Text>
-          <Text fontSize="xl">{totalPrice.toLocaleString()} 円</Text>
-        </HStack>
-        <HStack justify="space-around" w="full">
-          <Button size="lg" w={32} onClick={() => handleClearCart()}>
-            全削除
-          </Button>
-          <Button colorScheme="teal" size="lg" w={32}>
-            購入手続き
-          </Button>
-        </HStack>
-      </VStack>
+      {cartItems.length === 0 ? (
+        <Text fontSize="xl">カートに商品がありません</Text>
+      ) : (
+        <>
+          <VStack w="full" px={8} gap={10}>
+            {cartItems.map((item) => (
+              <CartItem key={item.id} {...item} />
+            ))}
+          </VStack>
+          <VStack w="full" px={8} gap={16}>
+            <HStack justify="space-between" w="full">
+              <Text fontSize="xl">合計金額</Text>
+              <Text fontSize="xl">{totalPrice.toLocaleString()} 円</Text>
+            </HStack>
+            <HStack justify="space-around" w="full">
+              <Button size="lg" w={32} onClick={() => handleClearCart()}>
+                全削除
+              </Button>
+              <Button colorScheme="teal" size="lg" w={32}>
+                購入手続き
+              </Button>
+            </HStack>
+          </VStack>
+        </>
+      )}
     </VStack>
   );
 };
