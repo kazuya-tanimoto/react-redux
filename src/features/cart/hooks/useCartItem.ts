@@ -21,7 +21,7 @@ export const useCartItem = (id: number, name: string, quantity: number) => {
   };
 
   const decreaseIconAriaLabel =
-    quantity > 0 ? `decrease ${name}` : `delete ${name}`;
+    quantity > 1 ? `decrease ${name}` : `delete ${name}`;
 
   return {
     handleIncrease,

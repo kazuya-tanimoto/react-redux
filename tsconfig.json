@@ -1,7 +1,31 @@
+// tsconfig.json
 {
-  "files": [],
+  "compilerOptions": {
+    "types": [
+      "vitest/globals",
+    ],
+    // 他のオプション
+    "jsx": "react",
+    "module": "esnext",
+    "target": "es6",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src",
+    "tests",
+    "vitest.setup.ts",
+    "global.d.ts"
+  ],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }
