@@ -13,9 +13,15 @@ export const Header = () => {
         React Redux
       </Heading>
       <HStack>
-        <FaShoppingCart size={40} color="white" />
+        <FaShoppingCart size={40} color="white" aria-label="Goto Cart" />
         <Float position="relative" bottom={4} right={4}>
-          <Badge colorScheme="red" rounded="full" px={2} py={1}>
+          <Badge
+            colorScheme="red"
+            rounded="full"
+            px={2}
+            py={1}
+            aria-label="cart item quantity"
+          >
             {totalQuantity}
           </Badge>
         </Float>
