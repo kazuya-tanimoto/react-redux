@@ -9,7 +9,7 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       include: ["src/**/*"],
-      exclude: ["**/stories/*", "**/*.stories.tsx", "**/types/*.ts", "**/*.d.ts", "**/data/*.ts", "src/dev/**/*"],
+      exclude: ["src/**/*.test.*", "**/types/*.ts", "**/*.d.ts", "**/data/*.ts", "src/dev/**/*"],
     },
     environment: "jsdom",
     exclude: [...configDefaults.exclude, "tests/**/*"],
