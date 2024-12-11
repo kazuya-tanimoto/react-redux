@@ -33,7 +33,7 @@ const cartSlice = createSlice({
       const cartItem = state.cartItems.find((item) => {
         return item.id === itemId;
       });
-      if (cartItem) cartItem.quantity -= 1;
+      if (cartItem && cartItem.quantity > 0) cartItem.quantity -= 1;
     },
   },
 });
