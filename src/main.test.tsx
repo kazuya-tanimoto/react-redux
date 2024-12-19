@@ -1,7 +1,7 @@
+import { renderApp } from "@/main";
 import { act, screen } from "@testing-library/react";
 import type React from "react";
 import { describe, expect, it, vi } from "vitest";
-import { renderApp } from "./main";
 
 // Mocking DevSupport if necessary
 vi.mock("@react-buddy/ide-toolbox", () => ({

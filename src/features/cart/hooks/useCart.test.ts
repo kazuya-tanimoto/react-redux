@@ -1,8 +1,8 @@
 import { clearCart } from "@/features/cart/CartSlice.ts";
 import { useCart } from "@/features/cart/hooks/useCart";
+import { selectCartItems, selectTotalPrice } from "@/features/cart/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { type Mock, describe, expect, it, vi } from "vitest";
-import { selectCartItems, selectTotalPrice } from "../selectors";
 
 vi.mock("react-redux", () => ({
   useDispatch: vi.fn(),

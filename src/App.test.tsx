@@ -1,7 +1,7 @@
+import App from "@/App";
+import { renderWithProviders } from "@/testing/renderWithProviders";
 import { screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import App from "./App";
-import { renderWithProviders } from "./testing/renderWithProviders";
 
 describe("App", () => {
   it("should render Header component", () => {

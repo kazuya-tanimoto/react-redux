@@ -1,5 +1,6 @@
 import { CartContainer } from "@/features/cart/components/CartContainer";
 import { useCart } from "@/features/cart/hooks/useCart";
+import { renderWithProviders } from "@/testing/renderWithProviders";
 import { fireEvent, screen } from "@testing-library/react";
 import {
   type Mock,
@@ -10,7 +11,6 @@ import {
   it,
   vi,
 } from "vitest";
-import { renderWithProviders } from "../../../testing/renderWithProviders";
 
 vi.mock("@/features/cart/hooks/useCart");
 

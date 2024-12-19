@@ -1,12 +1,12 @@
-import type { CartItem } from "@/features/types";
-import { describe, expect, it } from "vitest";
 import cartReducer, {
   clearCart,
   decrease,
   deleteItem,
   increase,
-} from "./CartSlice";
-import { cartItems } from "./data/CartItems";
+} from "@/features/cart/CartSlice";
+import { cartItems } from "@/features/cart/data/CartItems";
+import type { CartItem } from "@/features/types";
+import { describe, expect, it } from "vitest";
 
 describe("cartSlice", () => {
   const initialState = { cartItems: [...cartItems] };

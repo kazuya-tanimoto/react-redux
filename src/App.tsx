@@ -1,4 +1,4 @@
-import "./App.css";
+import "@/App.css";
 import { Header } from "@/components/Header.tsx";
 import { CartContainer } from "@/features/cart/components/CartContainer.tsx";
 import { VStack } from "@chakra-ui/react";
