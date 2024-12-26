@@ -1,7 +1,8 @@
 import { CartContainer } from "@/features/cart/components/CartContainer";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { renderWithProviders } from "@/testing/renderWithProviders";
-import { fireEvent, screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import {
   type Mock,
   afterEach,
@@ -71,10 +72,28 @@ describe("CartContainer", () => {
     expect(screen.getByText("カートに商品がありません")).toBeInTheDocument();
   });
 
-  it("calls handleClearCart when clear button is clicked", () => {
+  it("opens confirm modal when clear button is clicked", async () => {
     renderWithProviders(<CartContainer />);
 
-    fireEvent.click(screen.getByText("全削除"));
+    await userEvent.click(screen.getByText("全削除"));
+    await waitFor(() => expect(screen.queryByText("削除確認")).toBeVisible());
+  });
+
+  it("closes confirm modal when cancel button is clicked", async () => {
+    renderWithProviders(<CartContainer />);
+
+    await userEvent.click(screen.getByText("全削除"));
+    await userEvent.click(screen.getByText("Cancel"));
+    await waitFor(() =>
+      expect(screen.queryByText("削除確認")).not.toBeVisible(),
+    );
+  });
+
+  it("clears cart when confirm button in modal is clicked", async () => {
+    renderWithProviders(<CartContainer />);
+
+    await userEvent.click(screen.getByText("全削除"));
+    await userEvent.click(screen.getByText("OK"));
     expect(mockHandleClearCart).toHaveBeenCalled();
   });
 });
